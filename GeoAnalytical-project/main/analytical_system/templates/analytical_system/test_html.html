@@ -1,0 +1,31 @@
+<!-- {% extends 'analytical_system/base.html' %}
+
+{% block title %}
+Добавление в БД
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}
+        <br>
+        {{ form.description }}
+        <br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <p>{{ error }}</p>
+    </form>
+
+    {% if data %}
+        {% for el in data %}
+            <div class="alert alert-warning mt-3">
+                <h1>{{ el.title }}</h1>
+                <p>Описание: {{ el.description }}</p>
+                <h4>{{ el.price }}  ₽</h4>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning mt-3">Пустая ТЕСТОВАЯ таблица</div>
+    {% endif %}
+</div>
+{% endblock %} -->

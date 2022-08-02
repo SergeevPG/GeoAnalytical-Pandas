@@ -1,0 +1,630 @@
+{% extends 'analytical_system/base.html' %}
+{% load static %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container-fluid h-100">
+        <!-- <div class="row align-items-center h-100">
+                <div class="col-sm-12"> -->
+        <!-- <div class="row justify-content-center m-0 p-0">
+                <div class="col text-center m-0 p-0">
+                        <h1 class="m-0 p-0">Модуль Анализа Больших Данных</h1>
+                </div>
+        </div> -->
+        <div class="row justify-content-center m-0">
+                <div class="col-sm-12">
+                        <form class="m-0 p-0" action="analysis-module" method="post">
+                                {% csrf_token %}
+                                <div class="row justify-content-center mt-5">
+                                        <div class="col-sm-6 text-center">
+                                                <div><b>Отобразить один из
+                                                                готовых
+                                                                отчетов:</b></div>
+                                                <button type="submit" class="btn btn-success mt-4"
+                                                        name="Standardized_Report">Отобразить</button><br>
+                                        </div>
+                                        <div class="col-sm-6  text-center">
+                                                <select class="form-select" aria-label="Default select example"
+                                                        name="SelectedReport">
+                                                        <option value="Report_1">
+                                                                Отчет о кол-ве выпускников
+                                                                программ
+                                                                бакалавриата, специалитета,
+                                                                магистратуры
+                                                        </option>
+                                                        <option value="Report_2">
+                                                                Отчет о ДТП в Уральском округе
+                                                        </option>
+                                                        <option value="Report_3">
+                                                                Отчет №2
+                                                        </option>
+                                                </select>
+                                        </div>
+                                </div>
+                        </form>
+                </div>
+                <hr class="mt-1 mb-1" />
+        </div>
+        <div class="row justify-content-center m-0">
+                <div class="col-sm-12  text-center">
+                        <h3>Пользовательский отчет</h3>
+                </div>
+        </div>
+        <div class="row justify-content-center m-0">
+                <div class="col-sm-12">
+
+                        <form class="m-0 p-0" action="analysis-module" method="post">
+                                <div class="regiontext row justify-content-center">
+                                        {% csrf_token %}
+                                        <hr class="mt-1 mb-1" />
+                                        <div class="col-sm-3">
+                                                <div><b>Центральный федеральный округ</b>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="0" name="reg0" id="id0"><label
+                                                                class="form-check-label" for="id0">Белгородская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="1" name="reg1" id="id1"><label
+                                                                class="form-check-label" for="id1">Брянская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="2" name="reg2" id="id2"><label
+                                                                class="form-check-label" for="id2">Владимирская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="3" name="reg3" id="id3"><label
+                                                                class="form-check-label" for="id3">Воронежская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="4" name="reg4" id="id4"><label
+                                                                class="form-check-label" for="id4">Ивановская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="5" name="reg5" id="id5"><label
+                                                                class="form-check-label" for="id5">Калужская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="6" name="reg6" id="id6"><label
+                                                                class="form-check-label" for="id6">Костромская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="7" name="reg7" id="id7"><label
+                                                                class="form-check-label" for="id7">Курская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="8" name="reg8" id="id8"><label
+                                                                class="form-check-label" for="id8">Липецкая
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="9" name="reg9" id="id9"><label
+                                                                class="form-check-label" for="id9">Московская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="10" name="reg10" id="id10"><label
+                                                                class="form-check-label" for="id10">Орловская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="11" name="reg11" id="id11"><label
+                                                                class="form-check-label" for="id11">Рязанская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="12" name="reg12" id="id12"><label
+                                                                class="form-check-label" for="id12">Смоленская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="13" name="reg13" id="id13"><label
+                                                                class="form-check-label" for="id13">Тамбовская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="14" name="reg14" id="id14"><label
+                                                                class="form-check-label" for="id14">Тверская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="15" name="reg15" id="id15"><label
+                                                                class="form-check-label" for="id15">Тульская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="16" name="reg16" id="id16"><label
+                                                                class="form-check-label" for="id16">Ярославская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="17" name="reg17" id="id17"><label
+                                                                class="form-check-label" for="id17">г.
+                                                                Москва</label></input>
+                                                </div>
+                                                <div><b>Уральский федеральный округ</b>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="58" name="reg58" id="id58"><label
+                                                                class="form-check-label" for="id58">Курганская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="59" name="reg59" id="id59"><label
+                                                                class="form-check-label" for="id59">Свердловская
+                                                                область
+                                                        </label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="60" name="reg60" id="id60"><label
+                                                                class="form-check-label" for="id60">Ханты-Мансийский
+                                                                автономный округ –
+                                                                Югра</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="61" name="reg61" id="id61"><label
+                                                                class="form-check-label" for="id61">Ямало-Ненецкий
+                                                                автономный
+                                                                округ</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="62" name="reg62" id="id62"><label
+                                                                class="form-check-label" for="id62">Тюменская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="63" name="reg63" id="id63"><label
+                                                                class="form-check-label" for="id63">Челябинская
+                                                                область</label></input>
+                                                </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                                <div><b>Южный федеральный округ</b></div>
+
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="29" name="reg29" id="id29"><label
+                                                                class="form-check-label" for="id29">Республика
+                                                                Адыгея</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="30" name="reg30" id="id30"><label
+                                                                class="form-check-label" for="id30">Республика
+                                                                Калмыкия</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="31" name="reg31" id="id31"><label
+                                                                class="form-check-label" for="id31">Республика
+                                                                Крым</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="32" name="reg32" id="id32"><label
+                                                                class="form-check-label" for="id32">Краснодарский
+                                                                край</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="33" name="reg33" id="id33"><label
+                                                                class="form-check-label" for="id33">Астраханская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="34" name="reg34" id="id34"><label
+                                                                class="form-check-label" for="id34">Волгоградская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="35" name="reg35" id="id35"><label
+                                                                class="form-check-label" for="id35">Ростовская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="36" name="reg36" id="id36"><label
+                                                                class="form-check-label" for="id36">г.
+                                                                Севастополь</label></input>
+                                                </div>
+                                                <div><b>Северо-Западный федеральный
+                                                                округ</b></div>
+
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="18" name="reg18" id="id18"><label
+                                                                class="form-check-label" for="id18">Республика
+                                                                Карелия</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="19" name="reg19" id="id19"><label
+                                                                class="form-check-label" for="id19">Республика
+                                                                Коми</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="20" name="reg20" id="id20"><label
+                                                                class="form-check-label" for="id20">Ненецкий
+                                                                автономный
+                                                                округ</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="21" name="reg21" id="id21"><label
+                                                                class="form-check-label" for="id21">Архангельская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="22" name="reg22" id="id22"><label
+                                                                class="form-check-label" for="id22">Вологодская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="23" name="reg23" id="id23"><label
+                                                                class="form-check-label" for="id23">Калининградская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="24" name="reg24" id="id24"><label
+                                                                class="form-check-label" for="id24">Ленинградская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="25" name="reg25" id="id25"><label
+                                                                class="form-check-label" for="id25">Мурманская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="26" name="reg26" id="id26"><label
+                                                                class="form-check-label" for="id26">Новгородская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="27" name="reg27" id="id27"><label
+                                                                class="form-check-label" for="id27">Псковская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="28" name="reg28" id="id28"><label
+                                                                class="form-check-label" for="id28">г.
+                                                                Санкт-Петербург</label></input>
+                                                </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                                <div><b>Приволжский федеральный округ</b>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="44" name="reg44" id="id44"><label
+                                                                class="form-check-label" for="id44">Республика
+                                                                Башкортостан</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="45" name="reg45" id="id45"><label
+                                                                class="form-check-label" for="id45">Республика
+                                                                Марий Эл</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="46" name="reg46" id="id46"><label
+                                                                class="form-check-label" for="id46">Республика
+                                                                Мордовия</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="47" name="reg47" id="id47"><label
+                                                                class="form-check-label" for="id47">Республика
+                                                                Татарстан</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="48" name="reg48" id="id48"><label
+                                                                class="form-check-label" for="id48">Удмуртская
+                                                                Республика</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="49" name="reg49" id="id49"><label
+                                                                class="form-check-label" for="id49">Чувашская
+                                                                Республика</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="50" name="reg50" id="id50"><label
+                                                                class="form-check-label" for="id50">Пермский
+                                                                край</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="51" name="reg51" id="id51"><label
+                                                                class="form-check-label" for="id51">Кировская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="52" name="reg52" id="id52"><label
+                                                                class="form-check-label" for="id52">Нижегородская
+                                                                область
+                                                        </label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="53" name="reg53" id="id53"><label
+                                                                class="form-check-label" for="id53">Оренбургская
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="54" name="reg54" id="id54"><label
+                                                                class="form-check-label" for="id54">Пензенская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="55" name="reg55" id="id55"><label
+                                                                class="form-check-label" for="id55">Самарская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="56" name="reg56" id="id56"><label
+                                                                class="form-check-label" for="id56">Саратовская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="57" name="reg57" id="id57"><label
+                                                                class="form-check-label" for="id57">Ульяновская
+                                                                область</label></input>
+                                                </div>
+                                                <div><b>Северо-Кавказский федеральный
+                                                                округ</b></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="37" name="reg37" id="id37"><label
+                                                                class="form-check-label" for="id37">Республика
+                                                                Дагестан</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="38" name="reg38" id="id38"><label
+                                                                class="form-check-label" for="id38">Республика
+                                                                Ингушетия
+                                                        </label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="39" name="reg39" id="id39"><label
+                                                                class="form-check-label" for="id39">Кабардино-Балкарская
+                                                                Республика</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="40" name="reg40" id="id40"><label
+                                                                class="form-check-label" for="id40">Карачаево-Черкесская
+                                                                Республика</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="41" name="reg41" id="id41"><label
+                                                                class="form-check-label" for="id41">Республика
+                                                                Северная Осетия –
+                                                                Алания</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="42" name="reg42" id="id42"><label
+                                                                class="form-check-label" for="id42">Чеченская
+                                                                Республика
+                                                        </label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="43" name="reg43" id="id43"><label
+                                                                class="form-check-label" for="id43">Ставропольский
+                                                                край</label></input>
+                                                </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                                <div><b>Сибирский федеральный округ</b>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="64" name="reg64" id="id64"><label
+                                                                class="form-check-label" for="id64">Республика
+                                                                Алтай</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="65" name="reg65" id="id65"><label
+                                                                class="form-check-label" for="id65">Республика
+                                                                Тыва</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="66" name="reg66" id="id66"><label
+                                                                class="form-check-label" for="id66">Республика
+                                                                Хакасия</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="67" name="reg67" id="id67"><label
+                                                                class="form-check-label" for="id67">Алтайский
+                                                                край</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="68" name="reg68" id="id68"><label
+                                                                class="form-check-label" for="id68">Красноярский
+                                                                край</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="69" name="reg69" id="id69"><label
+                                                                class="form-check-label" for="id69">Иркутская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="70" name="reg70" id="id70"><label
+                                                                class="form-check-label" for="id70">Кемеровская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="71" name="reg71" id="id71"><label
+                                                                class="form-check-label" for="id71">Новосибирская
+                                                                область
+                                                        </label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="72" name="reg72" id="id72"><label
+                                                                class="form-check-label" for="id72">Омская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="73" name="reg73" id="id73"><label
+                                                                class="form-check-label" for="id73">Томская
+                                                                область</label></input>
+                                                </div>
+                                                <div><b>Дальневосточный федеральный
+                                                                округ</b></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="74" name="reg74" id="id74"><label
+                                                                class="form-check-label" for="id74">Республика
+                                                                Бурятия</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="75" name="reg75" id="id75"><label
+                                                                class="form-check-label" for="id75">Республика
+                                                                Саха
+                                                                (Якутия)</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="76" name="reg76" id="id76"><label
+                                                                class="form-check-label" for="id76">Забайкальский
+                                                                край</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="77" name="reg77" id="id77"><label
+                                                                class="form-check-label" for="id77">Камчатский
+                                                                край</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="78" name="reg78" id="id78"><label
+                                                                class="form-check-label" for="id78">Приморский
+                                                                край</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="79" name="reg79" id="id79"><label
+                                                                class="form-check-label" for="id79">Хабаровский
+                                                                край </label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="80" name="reg80" id="id80"><label
+                                                                class="form-check-label" for="id80">Амурская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="81" name="reg81" id="id81"><label
+                                                                class="form-check-label" for="id81">Магаданская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="82" name="reg82" id="id82"><label
+                                                                class="form-check-label" for="id82">Сахалинская
+                                                                область</label></input>
+                                                </div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="83" name="reg83" id="id83"><label
+                                                                class="form-check-label" for="id83">Еврейская
+                                                                автономная
+                                                                область</label></input></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox"
+                                                                value="84" name="reg84" id="id84"><label
+                                                                class="form-check-label" for="id84">Чукотский
+                                                                автономный
+                                                                округ</label></input></div>
+                                        </div>
+                                        <hr class="mt-1 mb-1" />
+                                </div>
+                                <div class="regiontext row justify-content-center">
+                                        <div class="col-sm-2">
+                                                <label><b>Выберите анализируемые данные:</b></label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                        name="TableName">
+                                                        <option value="region_population" selected>
+                                                                Население</option>
+                                                        <option value="population_change">Изменение
+                                                                численности населения за год в %
+                                                        </option>
+
+                                                        <option value="life_expectancy">Ожидаемая
+                                                                продолжительность жизни</option>
+                                                        <option value="fertility_rates">Число родившихся
+                                                                на 1000 человек</option>
+
+                                                        <option value="number_graduate_students">
+                                                                Численность аспирантов (чел.)</option>
+                                                        <option value="number_doctoral_students">
+                                                                Численность докторантов (чел.)</option>
+                                                        <option
+                                                                value="bachelors_specialists_and_masters_degree_programs">
+                                                                Кол-во принятых на обучение по
+                                                                программам бакалавриата, специалитета,
+                                                                магистратуры</option>
+                                                        <option
+                                                                value="bachelors_specialists_and_masters_graduate_student">
+                                                                Кол-во выпускников программ
+                                                                бакалавриата, специалитета, магистратуры
+                                                        </option>
+
+                                                        <option value="number_passangers_railway">
+                                                                Отправлено пассажиров железнодорожным
+                                                                транспортом (тыс. чел.)</option>
+                                                        <option value="density_railway_tracks">Плотность
+                                                                км железнодорожных путей на 10 000 км2
+                                                                территории</option>
+
+                                                        <option value="passenger_transportation">
+                                                                Перевозки пассажиров (млн. чел.)
+                                                        </option>
+                                                        <option value="passenger_turnover">
+                                                                Пассажирооборот</option>
+
+                                                        <option value="number_dtp">Число ДТП (на 100 000
+                                                                чел.)</option>
+                                                </select>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                                <label><b>Выберите год:</b></label>
+                                                <select class="form-select" multiple aria-label="Default select example"
+                                                        name="Years">
+                                                        <option value="2">2005</option>
+                                                        <option value="3">2010</option>
+                                                        <option value="4">2015</option>
+                                                        <option value="5">2018</option>
+                                                        <option value="6">2019</option>
+                                                        <option value="7">2020</option>
+                                                </select>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                                <label><b>Выберите виды визуализации:</b></label>
+                                                <select class="form-select" multiple aria-label="Default select example"
+                                                        name="TypeVisualization">
+                                                        <option value="1">Карта</option>
+                                                        <option value="2">Гистограмма</option>
+                                                        <option value="3">Круговая Диаграмма</option>
+                                                        <option value="4">Таблица</option>
+                                                        <option value="5">Линейная Диаграмма</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-sm-4 text-center">
+                                                <div><b>Отобразить пользовательский отчет с
+                                                                выставленными параметрами</b></div>
+                                                <button type="submit" class="btn btn-success mt-4"
+                                                        name="Customer_Report">Отобразить</button><br>
+                                        </div>
+                                        <hr class="mt-1 mb-1" />
+                                </div>
+                        </form>
+                </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-12  text-center">
+                        <img src="{% static '/images/img2.png' %}" alt="Image_MAP" class="img-fluid" />
+                </div>
+
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-6  text-center">
+                        {% if chart %}
+                        <img src="data:image/png;base64, {{chart|safe}}">
+                        {% endif %}
+                </div>
+                <div class="col-sm-6">
+                        {% if chart2 %}
+                        <img src="data:image/png;base64, {{chart2|safe}}" class="img-fluid">
+                        {% endif %}
+                </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-12">
+
+                        <table class="table table-striped table-dark table-bordered">
+                                {{DataFrame|safe}}
+                        </table>
+                </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-sm-12">
+                        {% if chart %}
+                        <img src="data:image/png;base64, {{chart|safe}}">
+                        {% endif %}
+                </div>
+
+        </div>
+        
+</div>
+</div>
+{% else %}
+<div class="container mt-5 md-5">
+        <h3>Для дальнейшей работы необходимо <span><a href="{% url 'register' %}">зарегистрироваться</a></span></h3><br>
+        <h5>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></h5><br>
+</div>
+
+
+{% endif %}
+{% endblock %}

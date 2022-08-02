@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <style>
+        .regiontext
+        {
+            font-family: 'Lato', sans-serif;
+            /* color:grey; */
+            font-size: 20px;
+            margin: 0px;
+        }
+        .headretext{
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+        }
+        .headretextSelected{
+            font-family: 'Lato', sans-serif;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            text-decoration: underline;
+        }
+        .headretextSelected:hover{
+            font-family: 'Lato', sans-serif;
+            color: rgb(66, 197, 5);
+            font-size: 20px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="{% url 'home' %}" class="headretext nav-link px-2 text-muted">Главная</a></li>
+                    <li><a href="{% url 'analysis_module' %}" class="headretextSelected nav-link px-2"><b>Модуль Анализа Больших Данных</b></a></li>
+                </ul>
+                <!-- <div class="text-end ml-5">
+                    {% if user.is_authenticated %}
+                    <div>Добро пожаловать, {{user.username}}</div>
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            
+                            <li><a href="{% url 'logout' %}"><button type="button" class="btn btn-light">Выйти</button></a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="{% url 'register' %}"><button type="button" class="btn btn-outline-light me-2">Регистрация</button></a></li>
+                            <li><a href="{% url 'login' %}"><button type="button" class="btn btn-light">Войти</button></a></li>
+                        </ul>
+                    {% endif %}
+                </div> -->
+            </div>
+        </div>
+    </header>
+
+
+    <div class="d-flex flex-column min-vh-100">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+
+
+
+
+    <footer class="headretext navbar-fixed-bottom py-3 my-4 bg-dark text-white mb-0 pb-0 mt-0 pt-0">
+        <ul class="nav justify-content-center">
+            <li><a href="{% url 'home' %}" class="nav-link px-2 text-muted">Главная</a></li>
+            <li><a href="{% url 'analysis_module' %}" class="nav-link px-2 text-muted">Модуль Анализа</a></li>
+        </ul>
+        <hr />
+        <p class="text-center text-muted pb-3 mb-0">© 2022 Модуль Анализа Данных</p>
+    </footer>
+</body>
+
+</html>
